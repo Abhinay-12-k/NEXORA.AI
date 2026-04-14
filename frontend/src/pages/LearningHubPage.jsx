@@ -88,14 +88,14 @@ const LearningHubPage = () => {
     return (
         <div className="space-y-8 max-w-6xl mx-auto">
             {/* ── Header ── */}
-            <header>
-                <div className="flex items-center gap-3 mb-1">
-                    <div className="p-2 bg-indigo-50 rounded-lg">
-                        <BookOpen className="w-6 h-6 text-indigo-600" />
+            <header className="page-header">
+                <div className="flex items-center gap-4 mb-2">
+                    <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100/50">
+                        <BookOpen className="w-8 h-8 text-indigo-600" />
                     </div>
-                    <h1 className="text-2xl font-bold text-slate-800 tracking-tight">Learning Hub</h1>
+                    <h1 className="page-title">Learning Hub</h1>
                 </div>
-                <p className="text-slate-500 text-sm ml-[52px]">
+                <p className="page-subtitle">
                     Personalised growth pathways powered by your Nexora HireIndex™ metrics.
                 </p>
             </header>
@@ -132,12 +132,12 @@ const LearningHubPage = () => {
             {/* ── Weakest Metrics Highlight ── */}
             {weakestMetrics.length > 0 && (
                 <section>
-                    <div className="flex flex-col mb-8">
+                    <div className="heading-block">
                         <h2 className="text-xl font-black text-slate-800 flex items-center gap-3">
                             <Target className="w-6 h-6 text-orange-500" />
                             Performance Gaps
                         </h2>
-                        <p className="text-xs text-slate-400 mt-1 ml-9">Key areas requiring immediate improvement to reach target readiness.</p>
+                        <p className="text-xs text-slate-400 font-bold uppercase tracking-widest hidden md:block">Critical Analysis</p>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -182,12 +182,12 @@ const LearningHubPage = () => {
             {/* ── Personalised Recommendations ── */}
             {recommendations.length > 0 && (
                 <section>
-                    <div className="flex flex-col mb-8">
+                    <div className="heading-block">
                         <h2 className="text-2xl font-black text-slate-800 flex items-center gap-3">
                             <Sparkles className="w-6 h-6 text-indigo-500" />
                             Personalised Recommendations
                         </h2>
-                        <p className="text-xs text-slate-400 mt-1 ml-9">High-impact focus areas based on your recent analytics.</p>
+                        <span className="badge badge-info bg-indigo-50 text-indigo-600 border-indigo-100 uppercase tracking-widest hidden md:block">AI Prioritized</span>
                     </div>
 
                     <div className="space-y-8">
@@ -270,15 +270,12 @@ const LearningHubPage = () => {
 
             {/* ── Mandatory Learning Ecosystem ── */}
             <section className="pt-12 border-t border-slate-100/50">
-                <div className="flex flex-col mb-10 text-center">
-                    <span className="px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-extrabold uppercase tracking-[0.2em] rounded-full border border-emerald-100 w-fit mx-auto mb-3">
-                        Curated Ecosystem
-                    </span>
+                <div className="heading-block flex-col text-center py-10">
                     <h2 className="text-3xl font-black text-slate-800 flex items-center justify-center gap-3">
                         <Sparkles className="w-7 h-7 text-emerald-500 animate-pulse" />
                         Mandatory Learning Ecosystem
                     </h2>
-                    <p className="text-slate-500 text-sm mt-2 max-w-md mx-auto italic">
+                    <p className="text-slate-500 text-sm mt-3 max-w-md mx-auto italic font-medium">
                         The essential professional toolstack for world-class engineering teams.
                     </p>
                 </div>
@@ -337,17 +334,13 @@ const LearningHubPage = () => {
 
             {/* ── Company Skill Alignment ── */}
             <section className="pt-16 border-t border-slate-100">
-                <div className="flex flex-col mb-10 text-center">
-                    <span className="px-3 py-1 bg-sky-50 text-sky-600 text-[10px] font-extrabold uppercase tracking-[0.2em] rounded-full border border-sky-100 w-fit mx-auto mb-3">
-                        Skill Synchronization
-                    </span>
-                    <h2 className="text-2xl font-black text-slate-800 flex items-center justify-center gap-3">
+                <div className="heading-block">
+                    <h2 className="text-2xl font-black text-slate-800 flex items-center gap-3">
                         <Briefcase className="w-7 h-7 text-sky-500" />
                         Company Skill Alignment
                     </h2>
-                    <p className="text-slate-500 text-xs mt-2 max-w-sm mx-auto">
-                        Real-time alignment with Nexora hiring standards and role expectations.
-                        Baseline readiness: <span className="font-bold text-sky-600">{threshold}%</span>
+                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest hidden lg:block">
+                        Target readiness: <span className="text-sky-600">{threshold}%</span>
                     </p>
                 </div>
 

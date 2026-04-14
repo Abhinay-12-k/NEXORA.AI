@@ -269,10 +269,10 @@ const LeaderboardPage = () => {
         <div className="space-y-6 animate-fadeIn">
 
             {/* ── Header ────────────────────────────── */}
-            <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <header className="page-header flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
                 <div className="flex items-center gap-4">
-                    <div className="p-3 bg-indigo-50 rounded-2xl">
-                        <Trophy className="w-6 h-6 text-indigo-600" />
+                    <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100/50">
+                        <Trophy className="w-8 h-8 text-indigo-600" />
                     </div>
                     <div>
                         <h1 className="page-title">Intern Leaderboard</h1>
@@ -281,11 +281,11 @@ const LeaderboardPage = () => {
                 </div>
 
                 {/* Actions Row */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4 relative z-10">
                     <button
                         onClick={handleExportPdf}
                         disabled={exporting}
-                        className="btn btn-primary"
+                        className="btn btn-primary px-6 shadow-xl shadow-blue-500/20"
                     >
                         {exporting ? (
                             <Loader2 className="w-4 h-4 animate-spin mr-2" />
@@ -295,10 +295,10 @@ const LeaderboardPage = () => {
                         Export Rankings
                     </button>
                     {/* Stats pill */}
-                    <div className="flex items-center gap-2 px-4 py-2.5 bg-white rounded-2xl border border-slate-200" style={{boxShadow:'0 1px 4px rgba(0,0,0,0.06)'}}>
+                    <div className="flex items-center gap-2 px-4 py-2.5 bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200">
                         <Users className="w-4 h-4 text-indigo-500" />
-                        <span className="text-sm font-semibold text-slate-700">
-                            {total} {total === 1 ? 'Intern' : 'Interns'} Ranked
+                        <span className="text-sm font-bold text-slate-700">
+                            {total} Ranked
                         </span>
                     </div>
                 </div>

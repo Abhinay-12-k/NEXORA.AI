@@ -75,27 +75,22 @@ const AICoachPage = () => {
 
     return (
         <div className="max-w-5xl mx-auto space-y-8 animate-fadeIn">
-            <header className="relative overflow-hidden bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white shadow-2xl">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
-
-                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div className="text-center md:text-left space-y-4">
-                        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold uppercase tracking-widest">
-                            <Sparkles className="w-3 h-3" />
-                            <span>Powered by Nexora Intelligence</span>
-                        </div>
-                        <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-tight">
-                            Personal <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">AI Coach</span>
-                        </h1>
-                        <p className="text-slate-400 max-w-lg font-medium leading-relaxed">
-                            Your personalized performance analysis and career readiness accelerator. Data-driven advice, tailored to your metrics.
-                        </p>
+            <header className="page-header flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="text-center md:text-left space-y-4">
+                    <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-600 text-xs font-bold uppercase tracking-widest">
+                        <Sparkles className="w-3 h-3" />
+                        <span>Powered by Nexora Intelligence</span>
                     </div>
-                    <div className="shrink-0">
-                        <div className="w-32 h-32 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl rotate-12 flex items-center justify-center shadow-xl shadow-indigo-500/20">
-                            <Zap className="w-16 h-16 text-white -rotate-12" />
-                        </div>
+                    <h1 className="page-title">
+                        Personal <span className="text-indigo-600">AI Coach</span>
+                    </h1>
+                    <p className="page-subtitle">
+                        Your personalized performance analysis and career readiness accelerator. Data-driven advice, tailored to your metrics.
+                    </p>
+                </div>
+                <div className="shrink-0 relative z-10">
+                    <div className="w-32 h-32 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl rotate-12 flex items-center justify-center shadow-xl shadow-indigo-500/20">
+                        <Zap className="w-16 h-16 text-white -rotate-12" />
                     </div>
                 </div>
             </header>

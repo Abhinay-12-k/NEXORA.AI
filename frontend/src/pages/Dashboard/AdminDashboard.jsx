@@ -86,20 +86,15 @@ const AdminDashboard = ({ setActiveView }) => {
 
     return (
         <div className="space-y-6 animate-fadeIn">
-            <header className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="flex items-center gap-5">
-                    <div className="p-4 bg-slate-900 rounded-2xl text-white shadow-xl shadow-slate-900/10 border border-slate-800">
-                        <ActivityIcon className="w-8 h-8" />
-                    </div>
-                    <div>
-                        <h1 className="text-3xl font-black text-slate-900 tracking-tighter">System Orchestration</h1>
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Real-time Global Network Activity</p>
-                    </div>
+            <header className="page-header flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <h1 className="page-title">System Orchestration</h1>
+                    <p className="page-subtitle uppercase tracking-[0.2em] text-[10px] font-black opacity-70">Real-time Global Network Activity</p>
                 </div>
                 <button
                     onClick={handleExportSystem}
                     disabled={exporting}
-                    className="btn btn-secondary px-6 py-3 rounded-2xl"
+                    className="btn btn-secondary px-6 py-3 rounded-2xl relative z-10"
                 >
                     {exporting ? (
                         <div className="w-4 h-4 border-2 border-slate-300 border-t-blue-600 rounded-full animate-spin mr-3" />
@@ -146,7 +141,7 @@ const AdminDashboard = ({ setActiveView }) => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
                     <div className="card overflow-hidden">
-                        <div className="p-8 border-b border-slate-100 flex items-center justify-between bg-slate-50/30">
+                        <div className="heading-block border-none shadow-none rounded-none border-b border-slate-100 bg-slate-50/30 -mx-6 -mt-6">
                             <h2 className="text-base font-black text-slate-800 flex items-center gap-3 uppercase tracking-widest">
                                 <div className="w-1.5 h-6 bg-blue-500 rounded-full"></div>
                                 Activity Hub

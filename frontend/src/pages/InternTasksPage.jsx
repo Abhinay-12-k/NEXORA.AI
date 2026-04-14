@@ -74,17 +74,17 @@ const InternTasksPage = () => {
 
     return (
         <div className="space-y-6 animate-fadeIn">
-            <header className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <header className="page-header flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div className="flex items-center gap-5">
-                    <div className="p-4 bg-blue-50 rounded-2xl text-blue-600 shadow-sm border border-blue-100/50">
-                        <CheckSquare className="w-8 h-8" />
+                    <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100/50">
+                        <CheckSquare className="w-8 h-8 text-blue-600" />
                     </div>
                     <div>
-                        <h1 className="text-3xl font-black text-slate-900 tracking-tighter">Deliverables</h1>
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Assignment & Submission Portal</p>
+                        <h1 className="page-title">Deliverables</h1>
+                        <p className="page-subtitle uppercase tracking-[0.2em] text-[10px] font-black opacity-70">Assignment & Submission Portal</p>
                     </div>
                 </div>
-                <div className="flex items-center gap-4 bg-slate-50 px-5 py-4 rounded-2xl border border-slate-100">
+                <div className="flex items-center gap-4 bg-white/80 backdrop-blur-sm px-6 py-4 rounded-3xl border border-slate-200 shadow-xl shadow-blue-500/5 relative z-10">
                     <div className="flex flex-col items-end">
                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Queue Status</span>
                         <p className="text-sm font-black text-slate-900 tabular-nums">

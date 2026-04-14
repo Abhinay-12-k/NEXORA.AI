@@ -143,16 +143,54 @@
      SECTION HEADERS (page-level)
   ────────────────────────────────────────── */
   .page-header {
-    @apply mb-6;
+    @apply w-full relative mb-10 p-10 rounded-[2.5rem] border border-slate-200/60 overflow-hidden;
+    background: linear-gradient(to right, #ffffff 0%, #eff6ff 100%);
+    box-shadow: 0 20px 50px -12px rgba(59, 130, 246, 0.12);
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(to right, #4f46e5, #3b82f6);
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
   }
 
   .page-title {
-    @apply text-2xl font-bold text-slate-900;
-    letter-spacing: -0.025em;
+    @apply text-4xl font-black text-slate-900;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
   }
 
   .page-subtitle {
-    @apply text-sm text-slate-500 mt-1 font-medium;
+    @apply text-base text-slate-500 mt-3 font-medium max-w-2xl leading-relaxed;
+  }
+
+  /* ──────────────────────────────────────────
+     UNIFIED HEADING BLOCK (Premium)
+  ────────────────────────────────────────── */
+  .heading-block {
+    @apply w-full relative mb-6 p-6 rounded-2xl border border-slate-200/60 overflow-hidden flex items-center justify-between;
+    background: linear-gradient(to right, #ffffff 0%, #eff6ff 100%);
+    box-shadow: 0 4px 20px -5px rgba(59, 130, 246, 0.08);
+  }
+
+  .heading-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #4f46e5, #3b82f6);
+    box-shadow: 0 1px 4px rgba(59, 130, 246, 0.2);
+  }
+
+  .heading-block h2 {
+    @apply text-lg font-bold text-slate-800 flex items-center gap-3 mb-0;
   }
 
   /* ──────────────────────────────────────────

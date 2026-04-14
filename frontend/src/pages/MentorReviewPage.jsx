@@ -70,21 +70,20 @@ const MentorReviewPage = () => {
 
     return (
         <div className="space-y-6 animate-fadeIn">
-            <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <header className="page-header flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <div>
                     <h1 className="page-title">Pending Submissions</h1>
                     <p className="page-subtitle">Queue Management &middot; Intern Performance Review</p>
                 </div>
                 <div
-                    className="flex items-center gap-4 bg-white px-5 py-3 rounded-2xl border border-slate-100"
-                    style={{boxShadow:'0 1px 4px rgba(0,0,0,0.06)'}}
+                    className="flex items-center gap-4 bg-white/80 backdrop-blur-sm px-6 py-4 rounded-3xl border border-slate-200 shadow-xl shadow-blue-500/5 relative z-10"
                 >
                     <div className="icon-box-orange">
-                        <Clock className="w-4 h-4 text-orange-500" />
+                        <Clock className="w-5 h-5 text-orange-500" />
                     </div>
                     <div>
-                        <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest block">Queue Size</span>
-                        <span className="text-2xl font-bold text-slate-900 leading-none">{pendingSubmissions.length}</span>
+                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-0.5">Queue Size</span>
+                        <span className="text-3xl font-black text-slate-900 leading-none">{pendingSubmissions.length}</span>
                     </div>
                 </div>
             </header>

@@ -10,13 +10,13 @@ const HireIndexPage = () => {
     return (
         <div className="space-y-8 animate-fadeIn">
             {/* Header Section */}
-            <header className="card border-t-4 border-t-indigo-500 p-8 md:p-10 mb-8 overflow-hidden">
-                <div className="flex items-center space-x-4 mb-4">
-                    <div className="p-3 bg-indigo-50 rounded-xl">
-                        <Target className="w-8 h-8 text-indigo-600" />
+            <header className="page-header">
+                <div className="flex items-center space-x-6 mb-6">
+                    <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100/50">
+                        <Target className="w-10 h-10 text-indigo-600" />
                     </div>
                     <div>
-                        <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter">
+                        <h1 className="page-title">
                             Nexora <span className="text-indigo-600">HireIndex™</span>
                         </h1>
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">
@@ -24,7 +24,7 @@ const HireIndexPage = () => {
                         </p>
                     </div>
                 </div>
-                <p className="text-slate-600 max-w-3xl leading-relaxed text-base">
+                <p className="page-subtitle">
                     The ultimate engineering readiness engine. We use AI-driven weighted analysis to evaluate your performance across 6 core metrics, accurately predicting your transition to full-time roles.
                 </p>
             </header>
