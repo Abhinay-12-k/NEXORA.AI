@@ -16,7 +16,6 @@ import {
     Target
 } from 'lucide-react';
 
-import { useAuth } from '../context/AuthContext';
 import API_URL from '../api';
 
 const MentorReviewPage = () => {
