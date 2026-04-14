@@ -9,49 +9,29 @@ const taskSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please add a description']
     },
-    assignedTo: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
-    },
-    assignedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
-    },
-    priority: {
+    difficulty: {
         type: String,
-        enum: ['low', 'medium', 'high'],
+        enum: ['easy', 'medium', 'hard'],
         default: 'medium'
     },
     deadline: {
         type: Date,
         required: [true, 'Please add a deadline']
     },
+    assignedTo: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
     status: {
         type: String,
-        enum: ['pending', 'completed'],
-        default: 'pending'
-    },
-    submissionLink: {
-        type: String
-    },
-    submittedAt: {
-        type: Date
-    },
-    feedbackScore: {
-        type: Number,
-        min: 0,
-        max: 10
-    },
-    feedbackComment: {
-        type: String
-    },
-    innovationScore: {
-        type: Number,
-        min: 0,
-        max: 10,
-        default: 0
+        enum: ['open', 'closed'],
+        default: 'open'
     }
 }, {
     timestamps: true

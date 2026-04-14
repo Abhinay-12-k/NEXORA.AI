@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Users, Search, ChevronRight, Mail, Calendar } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import API_URL from '../../api';
 
 const InternListView = ({ onViewReport }) => {
     const { user } = useAuth();
@@ -14,7 +15,7 @@ const InternListView = ({ onViewReport }) => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
                 console.log("Fetching interns with token:", user.token);
-                const res = await axios.get('http://localhost:5000/api/users/interns', config);
+                const res = await axios.get(`${API_URL}/users/interns`, config);
                 console.log("Interns response data:", res.data);
                 setInterns(res.data);
                 setLoading(false);
@@ -32,31 +33,28 @@ const InternListView = ({ onViewReport }) => {
         i.email.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const cardThemes = [
-        { card: 'glass-green', avatar: 'bg-green-100 text-green-600', btn: 'hover:bg-green-500 hover:text-white', icon: 'text-green-500' },
-        { card: 'glass-yellow', avatar: 'bg-yellow-100 text-yellow-700', btn: 'hover:bg-yellow-500 hover:text-white', icon: 'text-yellow-600' },
-        { card: 'glass-blue', avatar: 'bg-blue-100 text-blue-600', btn: 'hover:bg-blue-500 hover:text-white', icon: 'text-blue-500' },
-        { card: 'glass-purple', avatar: 'bg-purple-100 text-purple-600', btn: 'hover:bg-purple-500 hover:text-white', icon: 'text-purple-500' },
-        { card: 'glass-orange', avatar: 'bg-orange-100 text-orange-600', btn: 'hover:bg-orange-500 hover:text-white', icon: 'text-orange-500' }
-    ];
-
-    if (loading) return <div className="flex justify-center p-12"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>;
+    if (loading) return <div className="flex justify-center p-12"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500"></div></div>;
 
     return (
-        <div className="space-y-6">
-            <header className="flex justify-between items-center">
-                <div>
-                    <h1 className="text-2xl font-bold text-slate-800">Intern Directory</h1>
-                    <p className="text-slate-500">View and manage all active interns</p>
+        <div className="space-y-6 animate-fadeIn">
+            <header className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm flex flex-col md:flex-row justify-between items-center gap-6">
+                <div className="flex items-center gap-5">
+                    <div className="p-4 bg-blue-50 rounded-2xl text-blue-600 shadow-sm border border-blue-100/50">
+                        <Users className="w-8 h-8" />
+                    </div>
+                    <div>
+                        <h1 className="text-3xl font-black text-slate-900 tracking-tighter">Human Capital</h1>
+                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Global Intern Talent Directory</p>
+                    </div>
                 </div>
-                <div className="relative w-64">
-                    <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+                <div className="relative group">
+                    <Search className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
                     <input
                         type="text"
-                        placeholder="Search interns..."
+                        placeholder="Filter talent..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10 pr-4 py-2 w-full border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className="pl-12 pr-6 py-3 w-64 border border-slate-100 bg-slate-50/50 rounded-2xl focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/5 transition-all font-bold text-sm"
                     />
                 </div>
             </header>
@@ -67,44 +65,37 @@ const InternListView = ({ onViewReport }) => {
                         {searchTerm ? "No interns match your search." : "No interns found in the system. Register one to see them here."}
                     </div>
                 ) : (
-                    filteredInterns.map((intern, index) => {
-                        const theme = cardThemes[index % cardThemes.length];
-                        return (
-                            <div key={intern._id} className={`${theme.card} glass-hover p-6 group transition-all duration-300 relative`}>
-                                <div className="flex items-center mb-6">
-                                    <div className={`w-14 h-14 rounded-2xl ${theme.avatar} flex items-center justify-center font-bold text-xl shadow-inner transition-transform duration-300 group-hover:scale-110`}>
-                                        {intern.name.charAt(0)}
-                                    </div>
-                                    <div className="ml-4">
-                                        <h3 className="font-extrabold text-[#1e1b4b] text-lg">{intern.name}</h3>
-                                        <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Intern ID: {intern._id.slice(-6)}</p>
-                                    </div>
+                    filteredInterns.map((intern) => (
+                        <div key={intern._id} className="card group hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 relative border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10">
+                            <div className="flex items-center mb-8">
+                                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 text-blue-600 flex items-center justify-center font-black text-2xl shadow-sm border border-blue-100 group-hover:from-blue-600 group-hover:to-indigo-700 group-hover:text-white transition-all duration-500">
+                                    {intern.name.charAt(0)}
                                 </div>
-
-                                <div className="space-y-4 mb-8">
-                                    <div className="flex items-center text-sm font-medium text-slate-600">
-                                        <div className="p-1.5 bg-white/60 rounded-lg mr-3 shadow-sm">
-                                            <Mail className={`w-4 h-4 ${theme.icon}`} />
-                                        </div>
-                                        {intern.email}
-                                    </div>
-                                    <div className="flex items-center text-sm font-medium text-slate-600">
-                                        <div className="p-1.5 bg-white/60 rounded-lg mr-3 shadow-sm">
-                                            <Calendar className={`w-4 h-4 ${theme.icon}`} />
-                                        </div>
-                                        Joined: {new Date(intern.createdAt).toLocaleDateString()}
-                                    </div>
+                                <div className="ml-5">
+                                    <h3 className="font-black text-slate-900 text-xl tracking-tight leading-none group-hover:text-blue-600 transition-colors">{intern.name}</h3>
+                                    <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-black mt-2">ID &middot; {intern._id.slice(-6)}</p>
                                 </div>
-
-                                <button
-                                    onClick={() => onViewReport(intern)}
-                                    className={`w-full py-3 bg-white/60 backdrop-blur-md text-slate-700 text-sm font-bold rounded-xl transition-all duration-300 flex items-center justify-center border border-white/80 shadow-sm ${theme.btn}`}
-                                >
-                                    View Performance <ChevronRight className="w-4 h-4 ml-1" />
-                                </button>
                             </div>
-                        );
-                    })
+
+                            <div className="space-y-4 mb-10">
+                                <div className="flex items-center p-3 bg-slate-50/50 rounded-xl border border-slate-100 group-hover:bg-white transition-colors">
+                                    <Mail className="w-4 h-4 text-slate-400 mr-3 shrink-0" />
+                                    <span className="text-xs font-bold text-slate-600 truncate">{intern.email}</span>
+                                </div>
+                                <div className="flex items-center p-3 bg-slate-50/50 rounded-xl border border-slate-100 group-hover:bg-white transition-colors">
+                                    <Calendar className="w-4 h-4 text-slate-400 mr-3 shrink-0" />
+                                    <span className="text-xs font-bold text-slate-600">Enrolled {new Date(intern.createdAt).toLocaleDateString()}</span>
+                                </div>
+                            </div>
+
+                            <button
+                                onClick={() => onViewReport(intern)}
+                                className="w-full py-4 bg-slate-900 text-white hover:bg-blue-600 text-xs font-black uppercase tracking-[0.2em] rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-slate-900/10 hover:shadow-blue-500/30"
+                            >
+                                Analytics Report <ChevronRight className="w-4 h-4 ml-2" />
+                            </button>
+                        </div>
+                    ))
                 )}
             </div>
         </div>

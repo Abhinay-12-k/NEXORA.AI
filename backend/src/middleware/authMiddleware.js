@@ -51,4 +51,13 @@ const mentorOnly = (req, res, next) => {
     }
 }
 
-module.exports = { protect, adminOnly, mentorOnly };
+const internOnly = (req, res, next) => {
+    if (req.user && req.user.role === 'intern') {
+        next();
+    } else {
+        res.status(401);
+        throw new Error('Not authorized — intern access only');
+    }
+}
+
+module.exports = { protect, adminOnly, mentorOnly, internOnly };

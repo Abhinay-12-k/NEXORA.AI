@@ -4,6 +4,8 @@ const asyncHandler = require('express-async-handler');
 const User = require('../users/user.model');
 const { logActivity } = require('../activity/activity.controller');
 
+const appEmitter = require('../../utils/eventEmitter');
+
 // @desc    Register new user
 // @route   POST /api/auth/register
 // @access  Public
@@ -33,6 +35,13 @@ const registerUser = asyncHandler(async (req, res) => {
 
     if (user) {
         await logActivity(user.id, user.role, 'intern_registered', 'User', user.id);
+
+        // Emit Welcome Email Event (Asynchronous)
+        appEmitter.emit('user.registered', {
+            email: user.email,
+            name: user.name,
+            role: user.role
+        });
 
         res.status(201).json({
             _id: user.id,
